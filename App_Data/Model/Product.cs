@@ -12,6 +12,6 @@ namespace App_Data.Model
         public string? MaSp { get; set; }
         public string? TenSp { get; set; }
 
-        public virtual ICollection<ProductDetail> ProductDetails { get; set; }
+        public virtual IEnumerable<ProductDetail> ProductDetails { get; set; }
     }
 }

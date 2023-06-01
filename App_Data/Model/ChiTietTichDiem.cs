@@ -12,6 +12,6 @@ namespace App_Data.Model
         public int? SoDiemTich { get; set; }
         public int? TrangThai { get; set; }
 
-        public virtual ICollection<UuDaiTichDiem> UuDaiTichDiems { get; set; }
+        public virtual IEnumerable<UuDaiTichDiem> UuDaiTichDiems { get; set; }
     }
 }

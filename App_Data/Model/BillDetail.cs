@@ -12,7 +12,7 @@ namespace App_Data.Model
         public Guid? IdproductDetails { get; set; }
         public Guid? Idbill { get; set; }
         public int? SoLuong { get; set; }
-        public double? DonGia { get; set; }
+        public float? DonGia { get; set; }
         public int? TrangThai { get; set; }
 
         public virtual Bill? Bill { get; set; }

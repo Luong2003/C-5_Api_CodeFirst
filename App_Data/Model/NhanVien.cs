@@ -19,6 +19,6 @@ namespace App_Data.Model
         public DateTime? Ngaysinh { get; set; }
 
         public virtual ChucVu? ChucVu { get; set; }
-        public virtual ICollection<Bill> Bills { get; set; }
+        public virtual IEnumerable<Bill> Bills { get; set; }
     }
 }

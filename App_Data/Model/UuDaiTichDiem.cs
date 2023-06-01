@@ -18,6 +18,6 @@ namespace App_Data.Model
 
         public virtual ChiTietTichDiem? ChiTietTichDiem { get; set; }
         public virtual TichDiem? TichDiem { get; set; }
-        public virtual ICollection<Bill> Bills { get; set; }
+        public virtual IEnumerable<Bill> Bills { get; set; }
     }
 }

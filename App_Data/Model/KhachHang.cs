@@ -16,7 +16,7 @@ namespace App_Data.Model
         public string? DiaChi { get; set; }
 
         public virtual TichDiem? TichDiem { get; set; }
-        public virtual ICollection<Bill> Bills { get; set; }
-        public virtual ICollection<Cart> Carts { get; set; }
+        public virtual IEnumerable<Bill> Bills { get; set; }
+        public virtual IEnumerable<Cart> Carts { get; set; }
     }
 }

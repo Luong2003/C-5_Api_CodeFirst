@@ -16,9 +16,9 @@ namespace App_Data.Configuration
             builder.ToTable("Giỏ hàng chi tiết");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.SoLuong).HasColumnType("int").IsRequired();
-            builder.Property(x => x.DonGia).HasColumnType("double").IsRequired();
-            builder.Property(x => x.IdproductDetails).HasColumnType("UNIQUEIDENTIFIER");
-            builder.HasOne(x => x.ProductDetail).WithMany(y => y.CartDetails).HasForeignKey(x => x.IdproductDetails);
+            builder.Property(x => x.DonGia).HasColumnType("float").IsRequired();
+            builder.Property(p => p.IdproductDetails).HasColumnType("UNIQUEIDENTIFIER");
+            builder.HasOne(p => p.ProductDetail).WithMany(y => y.CartDetails).HasForeignKey(p => p.IdproductDetails);
         }
     }
 }

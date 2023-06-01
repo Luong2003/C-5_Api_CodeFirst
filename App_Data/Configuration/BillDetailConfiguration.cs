@@ -16,12 +16,12 @@ namespace App_Data.Configuration
             builder.ToTable("Hóa Đơn Chi Tiết");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.SoLuong).HasColumnType("int").IsRequired();
-            builder.Property(x => x.DonGia).HasColumnType("double").IsRequired();
+            builder.Property(x => x.DonGia).HasColumnType("float").IsRequired();
             builder.Property(x => x.TrangThai).HasColumnType("int").IsRequired();
-            builder.Property(x => x.Idbill).HasColumnType("UNIQUEIDENTIFIER");
-            builder.Property(x => x.IdproductDetails).HasColumnType("UNIQUEIDENTIFIER");
-            builder.HasOne(x => x.Bill).WithMany(y => y.BillDetails).HasForeignKey(x => x.Idbill);
-            builder.HasOne(x => x.ProductDetail).WithMany(y => y.BillDetails).HasForeignKey(x => x.IdproductDetails);
+            builder.Property(p => p.Idbill).HasColumnType("UNIQUEIDENTIFIER");
+            builder.Property(p => p.IdproductDetails).HasColumnType("UNIQUEIDENTIFIER");
+            builder.HasOne(p => p.Bill).WithMany(y => y.BillDetails).HasForeignKey(p => p.Idbill);
+            builder.HasOne(p => p.ProductDetail).WithMany(y => y.BillDetails).HasForeignKey(p => p.IdproductDetails);
         }
     }
 }

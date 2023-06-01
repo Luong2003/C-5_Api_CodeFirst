@@ -10,10 +10,10 @@ namespace App_Data.Model
     {
         public Guid Id { get; set; }
         public Guid? IdproductDetails { get; set; }
-        public double? DonGia { get; set; }
+        public float? DonGia { get; set; }
         public int? SoLuong { get; set; }
 
         public virtual ProductDetail? ProductDetail { get; set; }
-        public virtual ICollection<Cart> Carts { get; set; }
+        public virtual IEnumerable<Cart> Carts { get; set; }
     }
 }

@@ -19,8 +19,8 @@ namespace App_Data.Model
         public string? DoPhanGiai { get; set; }
         public string? MoTa { get; set; }
         public int? SoLuongTon { get; set; }
-        public double? GiaNhap { get; set; }
-        public double? GiaBan { get; set; }
+        public float? GiaNhap { get; set; }
+        public float? GiaBan { get; set; }
         public string? NhaSanXuat { get; set; }
         public string? TheLoai { get; set; }
         public DateTime? NgaySanXuat { get; set; }
@@ -29,7 +29,7 @@ namespace App_Data.Model
         public virtual Color? Color{ get; set; }
         public virtual Product? Product { get; set; }
         public virtual Size? Size{ get; set; }
-        public virtual ICollection<BillDetail> BillDetails { get; set; }
-        public virtual ICollection<CartDetail> CartDetails { get; set; }
+        public virtual IEnumerable<BillDetail> BillDetails { get; set; }
+        public virtual IEnumerable<CartDetail> CartDetails { get; set; }
     }
 }

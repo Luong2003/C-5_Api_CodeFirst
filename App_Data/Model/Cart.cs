@@ -12,7 +12,7 @@ namespace App_Data.Model
         public Guid? IdkhachHang { get; set; }
         public Guid? IdcartDetails { get; set; }
         public int? SoLuong { get; set; }
-        public double? DonGia { get; set; }
+        public float? DonGia { get; set; }
         public DateTime? NgayTao { get; set; }
 
         public virtual CartDetail? CartDetail { get; set; }

@@ -16,12 +16,12 @@ namespace App_Data.Configuration
             builder.ToTable("Giỏ hàng");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.SoLuong).HasColumnType("int").IsRequired();
-            builder.Property(x => x.DonGia).HasColumnType("double").IsRequired();
+            builder.Property(x => x.DonGia).HasColumnType("float").IsRequired();
             builder.Property(x => x.NgayTao).HasColumnType("Datetime").IsRequired();
-            builder.Property(x => x.IdcartDetails).HasColumnType("UNIQUEIDENTIFIER");
-            builder.Property(x => x.IdkhachHang).HasColumnType("UNIQUEIDENTIFIER");
-            builder.HasOne(x => x.CartDetail).WithMany(y => y.Carts).HasForeignKey(x => x.IdcartDetails);
-            builder.HasOne(x => x.KhachHang).WithMany(y => y.Carts).HasForeignKey(x => x.IdkhachHang);
+            builder.Property(p => p.IdcartDetails).HasColumnType("UNIQUEIDENTIFIER");
+            builder.Property(p => p.IdkhachHang).HasColumnType("UNIQUEIDENTIFIER");
+            builder.HasOne(p => p.CartDetail).WithMany(y => y.Carts).HasForeignKey(p => p.IdcartDetails);
+            builder.HasOne(p => p.KhachHang).WithMany(y => y.Carts).HasForeignKey(p => p.IdkhachHang);
         }
     }
 }

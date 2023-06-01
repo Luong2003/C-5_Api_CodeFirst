@@ -12,6 +12,6 @@ namespace App_Data.Model
         public string? MaChucVu { get; set; }
         public string? TenChucVu { get; set; }
 
-        public virtual ICollection<NhanVien> NhanViens { get; set; }
+        public virtual IEnumerable<NhanVien> NhanViens { get; set; }
     }
 }

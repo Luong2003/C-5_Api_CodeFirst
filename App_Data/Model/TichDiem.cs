@@ -12,7 +12,7 @@ namespace App_Data.Model
         public int? SoDiem { get; set; }
         public int? TrangThai { get; set; }
 
-        public virtual ICollection<KhachHang> KhachHangs { get; set; }
-        public virtual ICollection<UuDaiTichDiem> UuDaiTichDiems { get; set; }
+        public virtual IEnumerable<KhachHang> KhachHangs { get; set; }
+        public virtual IEnumerable<UuDaiTichDiem> UuDaiTichDiems { get; set; }
     }
 }

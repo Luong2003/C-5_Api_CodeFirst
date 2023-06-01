@@ -20,20 +20,20 @@ namespace App_Data.Configuration
             builder.Property(x => x.MoTa).HasColumnType("nvarchar(1000)").IsRequired();
             builder.Property(x => x.DiaChiShop).HasColumnType("nvarchar(1000)").IsRequired();
             builder.Property(x => x.DiaChiKhachHang).HasColumnType("nvarchar(1000)").IsRequired();
-            builder.Property(x => x.TienShip).HasColumnType("double").IsRequired();
-            builder.Property(x => x.FreeShip).HasColumnType("double").IsRequired();
-            builder.Property(x => x.TongTien).HasColumnType("double").IsRequired();
-            builder.Property(x => x.SoTienGiam).HasColumnType("double").IsRequired();
-            builder.Property(x => x.TienKhachDua).HasColumnType("double").IsRequired();
+            builder.Property(x => x.TienShip).HasColumnType("float").IsRequired();
+            builder.Property(x => x.FreeShip).HasColumnType("float").IsRequired();
+            builder.Property(x => x.TongTien).HasColumnType("float").IsRequired();
+            builder.Property(x => x.SoTienGiam).HasColumnType("float").IsRequired();
+            builder.Property(x => x.TienKhachDua).HasColumnType("float").IsRequired();
             builder.Property(x => x.TrangThai).HasColumnType("int").IsRequired();
-            builder.Property(x => x.IdkhachHang).HasColumnType("UNIQUEIDENTIFIER");
-            builder.Property(x => x.Idvoucher).HasColumnType("UNIQUEIDENTIFIER");
-            builder.Property(x => x.IdnhanVien).HasColumnType("UNIQUEIDENTIFIER");
-            builder.Property(x => x.IduuDaiTichDiem).HasColumnType("UNIQUEIDENTIFIER");
-            builder.HasOne(x => x.KhachHang).WithMany(y => y.Bills).HasForeignKey(x => x.IdkhachHang);
-            builder.HasOne(x => x.UuDaiTichDiem).WithMany(y => y.Bills).HasForeignKey(x => x.IduuDaiTichDiem);
-            builder.HasOne(x => x.NhanVien).WithMany(y => y.Bills).HasForeignKey(x => x.IdnhanVien);
-            builder.HasOne(x => x.Voucher).WithMany(y => y.Bills).HasForeignKey(x => x.Idvoucher);
+            builder.Property(p => p.IdkhachHang).HasColumnType("UNIQUEIDENTIFIER");
+            builder.Property(p => p.Idvoucher).HasColumnType("UNIQUEIDENTIFIER");
+            builder.Property(p => p.IdnhanVien).HasColumnType("UNIQUEIDENTIFIER");
+            builder.Property(p => p.IduuDaiTichDiem).HasColumnType("UNIQUEIDENTIFIER");
+            builder.HasOne(p => p.KhachHang).WithMany(y => y.Bills).HasForeignKey(p => p.IdkhachHang);
+            builder.HasOne(p => p.UuDaiTichDiem).WithMany(y => y.Bills).HasForeignKey(p => p.IduuDaiTichDiem);
+            builder.HasOne(p => p.NhanVien).WithMany(y => y.Bills).HasForeignKey(p => p.IdnhanVien);
+            builder.HasOne(p => p.Voucher).WithMany(y => y.Bills).HasForeignKey(p => p.Idvoucher);
         }
     }
 }

@@ -12,6 +12,6 @@ namespace App_Data.Model
         public string? Ma { get; set; }
         public string? Ten { get; set; }
 
-        public virtual ICollection<ProductDetail> ProductDetails { get; set; }
+        public virtual IEnumerable<ProductDetail> ProductDetails { get; set; }
     }
 }

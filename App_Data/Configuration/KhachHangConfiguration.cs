@@ -19,8 +19,8 @@ namespace App_Data.Configuration
             builder.Property(x => x.Sdt).HasColumnType("nvarchar(1000)").IsRequired();
             builder.Property(x => x.MatKhau).HasColumnType("nvarchar(1000)").IsRequired();
             builder.Property(x => x.DiaChi).HasColumnType("nvarchar(1000)").IsRequired();
-            builder.Property(x => x.IdtichDiem).HasColumnType("UNIQUEIDENTIFIER");
-            builder.HasOne(x => x.TichDiem).WithMany(y => y.KhachHangs).HasForeignKey(x => x.IdtichDiem);
+            builder.Property(p => p.IdtichDiem).HasColumnType("UNIQUEIDENTIFIER");
+            builder.HasOne(p => p.TichDiem).WithMany(y => y.KhachHangs).HasForeignKey(p => p.IdtichDiem);
         }
     }
 }

@@ -18,17 +18,17 @@ namespace App_Data.Model
         public string? MoTa { get; set; }
         public string? DiaChiShop { get; set; }
         public string? DiaChiKhachHang { get; set; }
-        public double? TienShip { get; set; }
-        public double? FreeShip { get; set; }
-        public double? TongTien { get; set; }
-        public double? SoTienGiam { get; set; }
-        public double? TienKhachDua { get; set; }
+        public float? TienShip { get; set; }
+        public float? FreeShip { get; set; }
+        public float? TongTien { get; set; }
+        public float? SoTienGiam { get; set; }
+        public float? TienKhachDua { get; set; }
         public int? TrangThai { get; set; }
 
         public virtual KhachHang KhachHang { get; set; }
         public virtual NhanVien? NhanVien { get; set; }
         public virtual UuDaiTichDiem? UuDaiTichDiem { get; set; }
         public virtual Voucher? Voucher { get; set; }
-        public virtual ICollection<BillDetail> BillDetails { get; set; }
+        public virtual IEnumerable<BillDetail> BillDetails { get; set; }
     }
 }

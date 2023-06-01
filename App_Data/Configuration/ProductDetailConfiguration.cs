@@ -16,23 +16,23 @@ namespace App_Data.Configuration
             builder.ToTable("Sản Phẩm Chi Tiết");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.CongNgheManHinh).HasColumnType("nvarchar(1000)").IsRequired();
-            builder.Property(x => x.BaoHanh).HasColumnType("Datetime").IsRequired();
+            builder.Property(x => x.BaoHanh).HasColumnType("DateTime").IsRequired();
             builder.Property(x => x.Series).HasColumnType("int").IsRequired();
             builder.Property(x => x.DoPhanGiai).HasColumnType("nvarchar(1000)").IsRequired();
             builder.Property(x => x.MoTa).HasColumnType("nvarchar(1000)").IsRequired();
             builder.Property(x => x.SoLuongTon).HasColumnType("int").IsRequired();
-            builder.Property(x => x.GiaNhap).HasColumnType("double").IsRequired();
-            builder.Property(x => x.GiaBan).HasColumnType("double").IsRequired();
+            builder.Property(x => x.GiaNhap).HasColumnType("float").IsRequired();
+            builder.Property(x => x.GiaBan).HasColumnType("float").IsRequired();
             builder.Property(x => x.NhaSanXuat).HasColumnType("nvarchar(1000)").IsRequired();
             builder.Property(x => x.TheLoai).HasColumnType("nvarchar(1000)").IsRequired();
             builder.Property(x => x.NgaySanXuat).HasColumnType("Datetime").IsRequired();
             builder.Property(x => x.TrangThaiKhuyenMai).HasColumnType("nvarchar(1000)").IsRequired();
-            builder.Property(x => x.Idcolor).HasColumnType("UNIQUEIDENTIFIER");
-            builder.Property(x => x.Idproduct).HasColumnType("UNIQUEIDENTIFIER");
-            builder.Property(x => x.Idsize).HasColumnType("UNIQUEIDENTIFIER");
-            builder.HasOne(x => x.Color).WithMany(y => y.ProductDetails).HasForeignKey(x => x.Idcolor);
-            builder.HasOne(x => x.Product).WithMany(y => y.ProductDetails).HasForeignKey(x => x.Idproduct);
-            builder.HasOne(x => x.Size).WithMany(y => y.ProductDetails).HasForeignKey(x => x.Idsize);
+            builder.Property(p => p.Idcolor).HasColumnType("UNIQUEIDENTIFIER");
+            builder.Property(p => p.Idproduct).HasColumnType("UNIQUEIDENTIFIER");
+            builder.Property(p => p.Idsize).HasColumnType("UNIQUEIDENTIFIER");
+            builder.HasOne(p => p.Color).WithMany(y => y.ProductDetails).HasForeignKey(p => p.Idcolor);
+            builder.HasOne(p => p.Product).WithMany(y => y.ProductDetails).HasForeignKey(p => p.Idproduct);
+            builder.HasOne(p => p.Size).WithMany(y => y.ProductDetails).HasForeignKey(p => p.Idsize);
         }
     }
 }
