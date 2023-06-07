@@ -193,19 +193,20 @@ namespace App_Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    IdchiTietTichDiem = table.Column<Guid>(type: "UNIQUEIDENTIFIER", nullable: true),
+                    IdchiTietTichDiem = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     IdtichDiem = table.Column<Guid>(type: "UNIQUEIDENTIFIER", nullable: true),
                     Idbill = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     SoDiemDung = table.Column<int>(type: "int", nullable: false),
                     NgayTichDiem = table.Column<DateTime>(type: "Datetime", nullable: false),
-                    TrangThai = table.Column<int>(type: "int", nullable: false)
+                    TrangThai = table.Column<int>(type: "int", nullable: false),
+                    ChiTietTichDiemId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Ưu đãi tích điểm", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Ưu đãi tích điểm_Chi Tiết tích điểm_IdchiTietTichDiem",
-                        column: x => x.IdchiTietTichDiem,
+                        name: "FK_Ưu đãi tích điểm_Chi Tiết tích điểm_ChiTietTichDiemId",
+                        column: x => x.ChiTietTichDiemId,
                         principalTable: "Chi Tiết tích điểm",
                         principalColumn: "Id");
                     table.ForeignKey(
@@ -403,9 +404,9 @@ namespace App_Data.Migrations
                 column: "Idsize");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Ưu đãi tích điểm_IdchiTietTichDiem",
+                name: "IX_Ưu đãi tích điểm_ChiTietTichDiemId",
                 table: "Ưu đãi tích điểm",
-                column: "IdchiTietTichDiem");
+                column: "ChiTietTichDiemId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Ưu đãi tích điểm_IdtichDiem",

@@ -18,9 +18,7 @@ namespace App_Data.Configuration
             builder.Property(x => x.SoDiemDung).HasColumnType("int").IsRequired();
             builder.Property(x => x.NgayTichDiem).HasColumnType("Datetime").IsRequired();
             builder.Property(x => x.TrangThai).HasColumnType("int").IsRequired();
-            builder.Property(p => p.IdchiTietTichDiem).HasColumnType("UNIQUEIDENTIFIER");
             builder.Property(p => p.IdtichDiem).HasColumnType("UNIQUEIDENTIFIER");
-            builder.HasOne(p => p.ChiTietTichDiem).WithMany(y => y.UuDaiTichDiems).HasForeignKey(p => p.IdchiTietTichDiem);
             builder.HasOne(p => p.TichDiem).WithMany(y => y.UuDaiTichDiems).HasForeignKey(p => p.IdtichDiem);
         }
     }

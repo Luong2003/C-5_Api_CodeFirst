@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace App_Data.Migrations
 {
     [DbContext(typeof(NHOM5_C5Context))]
-    [Migration("20230601183349_1")]
+    [Migration("20230602062448_1")]
     partial class _1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -449,11 +449,14 @@ namespace App_Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("ChiTietTichDiemId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<Guid?>("Idbill")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("IdchiTietTichDiem")
-                        .HasColumnType("UNIQUEIDENTIFIER");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("IdtichDiem")
                         .HasColumnType("UNIQUEIDENTIFIER");
@@ -472,7 +475,7 @@ namespace App_Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IdchiTietTichDiem");
+                    b.HasIndex("ChiTietTichDiemId");
 
                     b.HasIndex("IdtichDiem");
 
@@ -615,7 +618,7 @@ namespace App_Data.Migrations
                 {
                     b.HasOne("App_Data.Model.ChiTietTichDiem", "ChiTietTichDiem")
                         .WithMany("UuDaiTichDiems")
-                        .HasForeignKey("IdchiTietTichDiem");
+                        .HasForeignKey("ChiTietTichDiemId");
 
                     b.HasOne("App_Data.Model.TichDiem", "TichDiem")
                         .WithMany("UuDaiTichDiems")

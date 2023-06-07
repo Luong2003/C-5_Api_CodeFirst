@@ -447,11 +447,14 @@ namespace App_Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("ChiTietTichDiemId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<Guid?>("Idbill")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("IdchiTietTichDiem")
-                        .HasColumnType("UNIQUEIDENTIFIER");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("IdtichDiem")
                         .HasColumnType("UNIQUEIDENTIFIER");
@@ -470,7 +473,7 @@ namespace App_Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IdchiTietTichDiem");
+                    b.HasIndex("ChiTietTichDiemId");
 
                     b.HasIndex("IdtichDiem");
 
@@ -613,7 +616,7 @@ namespace App_Data.Migrations
                 {
                     b.HasOne("App_Data.Model.ChiTietTichDiem", "ChiTietTichDiem")
                         .WithMany("UuDaiTichDiems")
-                        .HasForeignKey("IdchiTietTichDiem");
+                        .HasForeignKey("ChiTietTichDiemId");
 
                     b.HasOne("App_Data.Model.TichDiem", "TichDiem")
                         .WithMany("UuDaiTichDiems")
