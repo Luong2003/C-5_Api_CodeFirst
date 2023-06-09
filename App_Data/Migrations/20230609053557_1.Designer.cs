@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace App_Data.Migrations
 {
     [DbContext(typeof(NHOM5_C5Context))]
-    [Migration("20230602062448_1")]
+    [Migration("20230609053557_1")]
     partial class _1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -354,8 +354,8 @@ namespace App_Data.Migrations
                     b.Property<double>("GiaBan")
                         .HasColumnType("float");
 
-                    b.Property<double>("GiaNhap")
-                        .HasColumnType("float");
+                    b.Property<Guid?>("IdSale")
+                        .HasColumnType("UNIQUEIDENTIFIER");
 
                     b.Property<Guid?>("Idcolor")
                         .HasColumnType("UNIQUEIDENTIFIER");
@@ -396,6 +396,8 @@ namespace App_Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("IdSale");
+
                     b.HasIndex("Idcolor");
 
                     b.HasIndex("Idproduct");
@@ -403,6 +405,33 @@ namespace App_Data.Migrations
                     b.HasIndex("Idsize");
 
                     b.ToTable("Sản Phẩm Chi Tiết", (string)null);
+                });
+
+            modelBuilder.Entity("App_Data.Model.Sale", b =>
+                {
+                    b.Property<Guid>("IDSale")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("GiaTriSale")
+                        .HasColumnType("int");
+
+                    b.Property<string>("MaSale")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<DateTime>("NgayBatDau")
+                        .HasColumnType("Datetime");
+
+                    b.Property<DateTime>("NgayKetThuc")
+                        .HasColumnType("Datetime");
+
+                    b.Property<int>("TrangThai")
+                        .HasColumnType("int");
+
+                    b.HasKey("IDSale");
+
+                    b.ToTable("Giảm Giá sản phẩm", (string)null);
                 });
 
             modelBuilder.Entity("App_Data.Model.Size", b =>
@@ -595,6 +624,10 @@ namespace App_Data.Migrations
 
             modelBuilder.Entity("App_Data.Model.ProductDetail", b =>
                 {
+                    b.HasOne("App_Data.Model.Sale", "Sale")
+                        .WithMany("ProductDetails")
+                        .HasForeignKey("IdSale");
+
                     b.HasOne("App_Data.Model.Color", "Color")
                         .WithMany("ProductDetails")
                         .HasForeignKey("Idcolor");
@@ -610,6 +643,8 @@ namespace App_Data.Migrations
                     b.Navigation("Color");
 
                     b.Navigation("Product");
+
+                    b.Navigation("Sale");
 
                     b.Navigation("Size");
                 });
@@ -676,6 +711,11 @@ namespace App_Data.Migrations
                     b.Navigation("BillDetails");
 
                     b.Navigation("CartDetails");
+                });
+
+            modelBuilder.Entity("App_Data.Model.Sale", b =>
+                {
+                    b.Navigation("ProductDetails");
                 });
 
             modelBuilder.Entity("App_Data.Model.Size", b =>

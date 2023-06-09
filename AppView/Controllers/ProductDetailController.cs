@@ -2,7 +2,9 @@
 using App_Data.Model;
 using App_Data.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.VisualBasic;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Newtonsoft.Json;
 
 namespace AppView.Controllers
@@ -22,14 +24,26 @@ namespace AppView.Controllers
             AllRepositories<ProductDetail> all = new AllRepositories<ProductDetail>(_C5Context, _ProductsDetail);
             _ProductDetailRepo = all;
         }
+        [HttpGet]
         public async Task<IActionResult> ShowListProductDetail()
         {
             string apiUrl = "https://localhost:7023/api/ProductDetail";
             var httpClient = new HttpClient();
             var respose = await httpClient.GetAsync(apiUrl);
             string apiData = await respose.Content.ReadAsStringAsync();
-            var Product = JsonConvert.DeserializeObject<List<Product>>(apiData);
-            return View(Product);
+            var ProductDetail = JsonConvert.DeserializeObject<List<ProductDetail>>(apiData);
+            return View(ProductDetail);
+        }
+
+        public async Task<IActionResult> CreateSpDetail()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateSpDetail(ProductDetail p)
+        {
+            _ProductDetailRepo.AddItem(p);
+            return RedirectToAction("ShowListProductDetail");
         }
         public IActionResult Index()
         {

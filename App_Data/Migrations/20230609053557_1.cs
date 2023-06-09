@@ -36,6 +36,22 @@ namespace App_Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Giảm Giá sản phẩm",
+                columns: table => new
+                {
+                    IDSale = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    MaSale = table.Column<string>(type: "nvarchar(1000)", nullable: false),
+                    NgayBatDau = table.Column<DateTime>(type: "Datetime", nullable: false),
+                    NgayKetThuc = table.Column<DateTime>(type: "Datetime", nullable: false),
+                    GiaTriSale = table.Column<int>(type: "int", nullable: false),
+                    TrangThai = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Giảm Giá sản phẩm", x => x.IDSale);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Kích Cỡ",
                 columns: table => new
                 {
@@ -134,13 +150,13 @@ namespace App_Data.Migrations
                     Idproduct = table.Column<Guid>(type: "UNIQUEIDENTIFIER", nullable: true),
                     Idcolor = table.Column<Guid>(type: "UNIQUEIDENTIFIER", nullable: true),
                     Idsize = table.Column<Guid>(type: "UNIQUEIDENTIFIER", nullable: true),
+                    IdSale = table.Column<Guid>(type: "UNIQUEIDENTIFIER", nullable: true),
                     CongNgheManHinh = table.Column<string>(type: "nvarchar(1000)", nullable: false),
                     BaoHanh = table.Column<DateTime>(type: "DateTime", nullable: false),
                     Series = table.Column<int>(type: "int", nullable: false),
                     DoPhanGiai = table.Column<string>(type: "nvarchar(1000)", nullable: false),
                     MoTa = table.Column<string>(type: "nvarchar(1000)", nullable: false),
                     SoLuongTon = table.Column<int>(type: "int", nullable: false),
-                    GiaNhap = table.Column<double>(type: "float", nullable: false),
                     GiaBan = table.Column<double>(type: "float", nullable: false),
                     NhaSanXuat = table.Column<string>(type: "nvarchar(1000)", nullable: false),
                     TheLoai = table.Column<string>(type: "nvarchar(1000)", nullable: false),
@@ -150,6 +166,11 @@ namespace App_Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Sản Phẩm Chi Tiết", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Sản Phẩm Chi Tiết_Giảm Giá sản phẩm_IdSale",
+                        column: x => x.IdSale,
+                        principalTable: "Giảm Giá sản phẩm",
+                        principalColumn: "IDSale");
                     table.ForeignKey(
                         name: "FK_Sản Phẩm Chi Tiết_Kích Cỡ_Idsize",
                         column: x => x.Idsize,
@@ -399,6 +420,11 @@ namespace App_Data.Migrations
                 column: "Idproduct");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Sản Phẩm Chi Tiết_IdSale",
+                table: "Sản Phẩm Chi Tiết",
+                column: "IdSale");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Sản Phẩm Chi Tiết_Idsize",
                 table: "Sản Phẩm Chi Tiết",
                 column: "Idsize");
@@ -442,6 +468,9 @@ namespace App_Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Ưu đãi tích điểm");
+
+            migrationBuilder.DropTable(
+                name: "Giảm Giá sản phẩm");
 
             migrationBuilder.DropTable(
                 name: "Kích Cỡ");

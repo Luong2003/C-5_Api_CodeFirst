@@ -43,7 +43,6 @@ namespace C_5_Api_CodeFirst.Controllers
             productDetail.DoPhanGiai = dophangiai;
             productDetail.MoTa = mota;
             productDetail.SoLuongTon = soluongton;
-            productDetail.GiaNhap = gianhap;
             productDetail.GiaBan = giaban;
             productDetail.NhaSanXuat = nhasanxuat;
             productDetail.TheLoai = theloai;
@@ -63,7 +62,6 @@ namespace C_5_Api_CodeFirst.Controllers
             productDetail.DoPhanGiai = dophangiai;
             productDetail.MoTa = mota;
             productDetail.SoLuongTon = soluongton;
-            productDetail.GiaNhap = gianhap;
             productDetail.GiaBan = giaban;
             productDetail.NhaSanXuat = nhasanxuat;
             productDetail.TheLoai = theloai;

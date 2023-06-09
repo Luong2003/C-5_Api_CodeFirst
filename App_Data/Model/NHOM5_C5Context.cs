@@ -38,7 +38,7 @@ namespace App_Data.Model
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Data Source=LUONG2003\GIACATLUONG;Initial Catalog=Nhom5_C5_CodeFirst;Integrated Security=True");
+            optionsBuilder.UseSqlServer(@"Data Source=LUONG2003\GIACATLUONG;Initial Catalog=Nhom5_C5_CodeFirst_last;Integrated Security=True");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
