@@ -37,7 +37,7 @@ namespace C_5_Api_CodeFirst.Controllers
 
         // POST api/<SaleController>
         [HttpPost("[action]")]
-        public bool CreteSize(string Ma, string Size1)
+        public bool CreteSize(string Ma, int Size1)
         {
             Size Size = new Size();
             Size.Ma = Ma;
@@ -47,7 +47,7 @@ namespace C_5_Api_CodeFirst.Controllers
 
         // PUT api/<SaleController>/5
         [HttpPut("[action]")]
-        public bool EditSale(Guid id, string Ma, string Size1)
+        public bool EditSale(Guid id, string Ma, int Size1)
         {
             Size size = _Sizerepo.GetAll().First(c => c.Id == id);
             size.Ma = Ma;

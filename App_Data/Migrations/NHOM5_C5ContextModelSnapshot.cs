@@ -352,6 +352,9 @@ namespace App_Data.Migrations
                     b.Property<double>("GiaBan")
                         .HasColumnType("float");
 
+                    b.Property<double>("GiaSale")
+                        .HasColumnType("float");
+
                     b.Property<Guid?>("IdSale")
                         .HasColumnType("UNIQUEIDENTIFIER");
 
@@ -442,9 +445,9 @@ namespace App_Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(1000)");
 
-                    b.Property<string>("Size1")
+                    b.Property<int?>("Size1")
                         .IsRequired()
-                        .HasColumnType("nvarchar(1000)");
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

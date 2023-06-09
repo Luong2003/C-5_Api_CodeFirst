@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace App_Data.Migrations
 {
     [DbContext(typeof(NHOM5_C5Context))]
-    [Migration("20230609053557_1")]
+    [Migration("20230609174321_1")]
     partial class _1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -354,6 +354,9 @@ namespace App_Data.Migrations
                     b.Property<double>("GiaBan")
                         .HasColumnType("float");
 
+                    b.Property<double>("GiaSale")
+                        .HasColumnType("float");
+
                     b.Property<Guid?>("IdSale")
                         .HasColumnType("UNIQUEIDENTIFIER");
 
@@ -444,9 +447,9 @@ namespace App_Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(1000)");
 
-                    b.Property<string>("Size1")
+                    b.Property<int?>("Size1")
                         .IsRequired()
-                        .HasColumnType("nvarchar(1000)");
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

@@ -22,6 +22,7 @@ namespace App_Data.Configuration
             builder.Property(x => x.MoTa).HasColumnType("nvarchar(1000)").IsRequired();
             builder.Property(x => x.SoLuongTon).HasColumnType("int").IsRequired();
             builder.Property(x => x.GiaBan).HasColumnType("float").IsRequired();
+            builder.Property(x => x.GiaSale).HasColumnType("float").IsRequired();
             builder.Property(x => x.NhaSanXuat).HasColumnType("nvarchar(1000)").IsRequired();
             builder.Property(x => x.TheLoai).HasColumnType("nvarchar(1000)").IsRequired();
             builder.Property(x => x.NgaySanXuat).HasColumnType("Datetime").IsRequired();

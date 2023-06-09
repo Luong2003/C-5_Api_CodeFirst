@@ -10,7 +10,7 @@ namespace App_Data.Model
     {
         public Guid Id { get; set; }
         public string? Ma { get; set; }
-        public string? Size1 { get; set; }
+        public int? Size1 { get; set; }
 
         public virtual IEnumerable<ProductDetail> ProductDetails { get; set; }
     }

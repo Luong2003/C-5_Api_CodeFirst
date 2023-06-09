@@ -6,6 +6,9 @@ using Microsoft.CodeAnalysis.VisualBasic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Newtonsoft.Json;
+using App_Data.ViewModel;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Text;
 
 namespace AppView.Controllers
 {
@@ -27,22 +30,40 @@ namespace AppView.Controllers
         [HttpGet]
         public async Task<IActionResult> ShowListProductDetail()
         {
-            string apiUrl = "https://localhost:7023/api/ProductDetail";
+            string apiUrl = "https://localhost:7023/api/ProductDetail/GetAllSanPhamChiTiet";
             var httpClient = new HttpClient();
             var respose = await httpClient.GetAsync(apiUrl);
             string apiData = await respose.Content.ReadAsStringAsync();
-            var ProductDetail = JsonConvert.DeserializeObject<List<ProductDetail>>(apiData);
+            var ProductDetail = JsonConvert.DeserializeObject<List<ProductDetailViewModel>>(apiData);
             return View(ProductDetail);
+        }
+        [HttpGet]
+        public async Task<IActionResult> ShowListProductSale()
+        {
+            string apiUrl = "https://localhost:7023/api/ProductDetail/GetAllProductSale";
+            var httpClient = new HttpClient();
+            var respose = await httpClient.GetAsync(apiUrl);
+            string apiData = await respose.Content.ReadAsStringAsync();
+            var ProductSalel = JsonConvert.DeserializeObject<List<ProductDetailViewModel>>(apiData);
+            return View(ProductSalel);
         }
         [HttpGet]
         public async Task<IActionResult> CreateSpDetail()
         {
+            ViewBag.Color = new SelectList(_C5Context.Colors.ToList().OrderBy(c => c.Ten), "Id", "Ten");
+            ViewBag.Size = new SelectList(_C5Context.Sizes.ToList().OrderBy(c => c.Size1), "Id", "Size1");
+            ViewBag.Sale = new SelectList(_C5Context.Sales.ToList().OrderBy(c => c.MaSale), "IDSale", "GiaTriSale");
+            ViewBag.Product = new SelectList(_C5Context.Products.ToList().OrderBy(c => c.TenSp), "Id", "TenSp");
             return View();
         }
         [HttpPost]
         public async Task<IActionResult> CreateSpDetail(ProductDetail p)
         {
-            _ProductDetailRepo.AddItem(p);
+            var spct1 = JsonConvert.SerializeObject(p);
+            string url = $"https://localhost:7023/api/ProductDetail/create-ProductDetail?idsp={p.Idproduct}&idcolor={p.Idcolor}&idsize={p.Idsize}&idsale={p.IdSale}&congnghemanhinh={p.CongNgheManHinh}&baohanh={p.BaoHanh}&series={p.Series}&dophangiai={p.DoPhanGiai}&mota={p.MoTa}&soluongton={p.SoLuongTon}&giasale={p.GiaSale}&giaban={p.GiaBan}&nhasanxuat={p.NhaSanXuat}&theloai={p.TheLoai}&ngaysanxuat={p.NgaySanXuat}&trangthaikhuyenmai={p.TrangThaiKhuyenMai}";
+            var client = new HttpClient();
+            StringContent content = new StringContent(spct1, Encoding.UTF8, "application/json");
+            HttpResponseMessage repons = client.PostAsync(url, content).Result;
             return RedirectToAction("ShowListProductDetail");
         }
         public IActionResult Index()

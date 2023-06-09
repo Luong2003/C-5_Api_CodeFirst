@@ -16,7 +16,7 @@ namespace App_Data.Configuration
             builder.ToTable("Kích Cỡ");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Ma).HasColumnType("nvarchar(1000)").IsRequired();
-            builder.Property(x => x.Size1).HasColumnType("nvarchar(1000)").IsRequired();
+            builder.Property(x => x.Size1).HasColumnType("int").IsRequired();
         }
     }
 }

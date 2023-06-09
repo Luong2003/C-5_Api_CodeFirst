@@ -1,0 +1,173 @@
+﻿@model App_Data.Model.ProductDetail
+
+@{
+    ViewData["Title"] = "CreateSpDetail";
+}
+
+<h1>CreateSpDetail</h1>
+
+<h4>ProductDetail</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateSpDetail">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>*@
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="Idproduct" class="control-label"></label>
+                </div>
+                <div class="col-9">                
+                    @Html.DropDownList("Id", ViewBag.Product as IEnumerable<SelectListItem>, "", null)
+			        @Html.ValidationMessageFor(model => model.Idproduct, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="Idcolor" class="control-label"></label>
+                </div>
+                <div class="col-9">
+                    @Html.DropDownList("Id", ViewBag.Color as IEnumerable<SelectListItem>, "", null)
+			        @Html.ValidationMessageFor(model => model.Idcolor, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="Idsize" class="control-label"></label>
+                </div>
+                <div class="col-9">
+                    @Html.DropDownList("Id", ViewBag.Size as IEnumerable<SelectListItem>, "", null)
+			        @Html.ValidationMessageFor(model => model.Idsize, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="IdSale" class="control-label"></label>
+                </div>
+                <div class="col-9">
+                    @Html.DropDownList("IDSale", ViewBag.Sale as IEnumerable<SelectListItem>, "", null)
+			        @Html.ValidationMessageFor(model => model.IdSale, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="CongNgheManHinh" class="control-label"></label>
+                </div>
+                <div class="col-9">
+                    <input asp-for="CongNgheManHinh" class="form-control" />
+                    <span asp-validation-for="CongNgheManHinh" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="BaoHanh" class="control-label"></label>
+                </div>
+                <div class="col-9">
+                    <input asp-for="BaoHanh" class="form-control" />
+                    <span asp-validation-for="BaoHanh" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="Series" class="control-label"></label>
+                </div>
+                <div class="col-9">
+                    <input asp-for="Series" class="form-control" />
+                    <span asp-validation-for="Series" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="DoPhanGiai" class="control-label"></label>
+                </div>
+                <div class="col-9">
+                    <input asp-for="DoPhanGiai" class="form-control" />
+                    <span asp-validation-for="DoPhanGiai" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="MoTa" class="control-label"></label>
+                </div>
+                <div class="col-9">
+                    <input asp-for="MoTa" class="form-control" />
+                    <span asp-validation-for="MoTa" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="SoLuongTon" class="control-label"></label>
+                </div>
+                <div class="col-9">
+                    <input asp-for="SoLuongTon" class="form-control" />
+                    <span asp-validation-for="SoLuongTon" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="GiaBan" class="control-label"></label>
+                </div>
+                <div class="col-9">
+                    <input asp-for="GiaBan" class="form-control" />
+                    <span asp-validation-for="GiaBan" class="text-danger"></span>
+                </div>
+            </div>
+            @*<div class="form-group row">
+                <label asp-for="GiaSale" class="control-label"></label>
+                <input asp-for="GiaSale" class="form-control" />
+                <span asp-validation-for="GiaSale" class="text-danger"></span>
+            </div>*@
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="NhaSanXuat" class="control-label"></label>
+                </div>
+                <div class="col-9">
+                    <input asp-for="NhaSanXuat" class="form-control" />
+                    <span asp-validation-for="NhaSanXuat" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="TheLoai" class="control-label"></label>
+                </div>
+                <div class="col-9">
+                    <input asp-for="TheLoai" class="form-control" />
+                    <span asp-validation-for="TheLoai" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3"> 
+                    <label asp-for="NgaySanXuat" class="control-label"></label>
+                </div>
+                <div class="col-9">
+                    <input asp-for="NgaySanXuat" class="form-control" />
+                    <span asp-validation-for="NgaySanXuat" class="text-danger"></span>
+                </div>
+            </div>
+            @*<div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="TrangThaiKhuyenMai" class="control-label"></label>
+                </div>
+                <div class="col-9">
+                    <input asp-for="TrangThaiKhuyenMai" class="form-control" />
+                    <span asp-validation-for="TrangThaiKhuyenMai" class="text-danger"></span>
+                </div>
+            </div>*@
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

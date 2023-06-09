@@ -57,7 +57,7 @@ namespace App_Data.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Ma = table.Column<string>(type: "nvarchar(1000)", nullable: false),
-                    Size1 = table.Column<string>(type: "nvarchar(1000)", nullable: false)
+                    Size1 = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -158,6 +158,7 @@ namespace App_Data.Migrations
                     MoTa = table.Column<string>(type: "nvarchar(1000)", nullable: false),
                     SoLuongTon = table.Column<int>(type: "int", nullable: false),
                     GiaBan = table.Column<double>(type: "float", nullable: false),
+                    GiaSale = table.Column<double>(type: "float", nullable: false),
                     NhaSanXuat = table.Column<string>(type: "nvarchar(1000)", nullable: false),
                     TheLoai = table.Column<string>(type: "nvarchar(1000)", nullable: false),
                     NgaySanXuat = table.Column<DateTime>(type: "Datetime", nullable: false),
