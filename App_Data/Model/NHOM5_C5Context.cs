@@ -30,6 +30,7 @@ namespace App_Data.Model
         public virtual DbSet<NhanVien> NhanViens { get; set; } 
         public virtual DbSet<Product> Products { get; set; } 
         public virtual DbSet<ProductDetail> ProductDetails { get; set; } 
+        public virtual DbSet<Sale> Sales { get; set; }
         public virtual DbSet<Size> Sizes { get; set; } 
         public virtual DbSet<TichDiem> TichDiems { get; set; } 
         public virtual DbSet<UuDaiTichDiem> UuDaiTichDiems { get; set; }

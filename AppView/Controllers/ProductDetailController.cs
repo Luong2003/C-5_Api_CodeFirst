@@ -34,7 +34,7 @@ namespace AppView.Controllers
             var ProductDetail = JsonConvert.DeserializeObject<List<ProductDetail>>(apiData);
             return View(ProductDetail);
         }
-
+        [HttpGet]
         public async Task<IActionResult> CreateSpDetail()
         {
             return View();
