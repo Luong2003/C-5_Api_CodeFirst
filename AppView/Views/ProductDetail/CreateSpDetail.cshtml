@@ -116,11 +116,15 @@
                     <span asp-validation-for="GiaBan" class="text-danger"></span>
                 </div>
             </div>
-            @*<div class="form-group row">
-                <label asp-for="GiaSale" class="control-label"></label>
-                <input asp-for="GiaSale" class="form-control" />
-                <span asp-validation-for="GiaSale" class="text-danger"></span>
-            </div>*@
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="GiaSale" class="control-label"></label>
+                </div>
+                <div class="col-9">
+                    <input asp-for="GiaSale" class="form-control" />
+                    <span asp-validation-for="GiaSale" class="text-danger"></span>
+                </div>
+            </div>
             <div class="form-group row">
                 <div class="col-3">
                     <label asp-for="NhaSanXuat" class="control-label"></label>
@@ -148,7 +152,7 @@
                     <span asp-validation-for="NgaySanXuat" class="text-danger"></span>
                 </div>
             </div>
-            @*<div class="form-group row">
+            <div class="form-group row">
                 <div class="col-3">
                     <label asp-for="TrangThaiKhuyenMai" class="control-label"></label>
                 </div>
@@ -156,7 +160,7 @@
                     <input asp-for="TrangThaiKhuyenMai" class="form-control" />
                     <span asp-validation-for="TrangThaiKhuyenMai" class="text-danger"></span>
                 </div>
-            </div>*@
+            </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

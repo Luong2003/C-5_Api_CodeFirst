@@ -1,4 +1,4 @@
-﻿@model IEnumerable<App_Data.ViewModel.ProductDetailViewModel>
+﻿@model IEnumerable<App_Data.Model.ProductDetail>
 
 @{
     ViewData["Title"] = "ShowListProductDetail";
@@ -16,16 +16,16 @@
                 @Html.DisplayNameFor(model => model.Id)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TenSp)
+                @Html.DisplayNameFor(model => model.Idproduct)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Color)
+                @Html.DisplayNameFor(model => model.Idcolor)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Size)
+                @Html.DisplayNameFor(model => model.Idsize)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.GiaTriSale)
+                @Html.DisplayNameFor(model => model.IdSale)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.CongNgheManHinh)
@@ -73,16 +73,16 @@
                 @Html.DisplayFor(modelItem => item.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TenSp)
+                @Html.DisplayFor(modelItem => item.Idproduct)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Color)
+                @Html.DisplayFor(modelItem => item.Idcolor)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Size)
+                @Html.DisplayFor(modelItem => item.Idsize)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.GiaTriSale)
+                @Html.DisplayFor(modelItem => item.IdSale)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CongNgheManHinh)
