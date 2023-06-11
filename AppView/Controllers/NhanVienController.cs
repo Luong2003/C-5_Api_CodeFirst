@@ -26,12 +26,13 @@ namespace AppView.Controllers
 		[HttpGet]
 		public async Task<IActionResult> ShowListNhanVien()
 		{
-			using (NHOM5_C5Context context = new NHOM5_C5Context())
-			{
-				var chucvu = context.ChucVus.ToList();
-				SelectList selectListChucVu = new SelectList(chucvu, "Id", "TenChucVu");
-				ViewBag.ChucVuList = selectListChucVu;
-			}
+			//Response.Headers.Add("Refresh", "1");
+			//using (NHOM5_C5Context context = new NHOM5_C5Context())
+			//{
+			//	var chucvu = context.ChucVus.ToList();
+			//	SelectList selectListChucVu = new SelectList(chucvu, "Id", "TenChucVu");
+			//	ViewBag.ChucVuList = selectListChucVu;
+			//}
 			string apiUrl = "https://localhost:7023/api/NhanVien";
 			var httpClient = new HttpClient();
 			var respose = await httpClient.GetAsync(apiUrl);
@@ -41,7 +42,7 @@ namespace AppView.Controllers
 		}
 
 		[HttpGet]
-		public async Task<IActionResult> CreateNhanVien()
+		public async Task<IActionResult> CreateNv()
 		{
 			using (NHOM5_C5Context context = new NHOM5_C5Context())
 			{
@@ -53,14 +54,16 @@ namespace AppView.Controllers
 		}
 
 		[HttpPost]
-		public async Task<IActionResult> CreateNhanVien(NhanVien n)
+		public async Task<IActionResult> CreateNv(NhanVien n)
 		{
-			
-			string apiUrl = $"https://localhost:7023/api/NhanVien/create-NhanVien?idchucvu={n.IdchucVu}&ma={n.Ma}&hoTen={n.HoTen}&sDT={n.Sdt}&matKhau={n.MatKhau}&diaChi={n.DiaChi}&gioiTinh={n.GioiTinh}&ngaySinh={n.Ngaysinh}";
-			HttpClient client = new HttpClient();
-			var response = await client.PostAsync(apiUrl, null);
-			//_nhanvienrepo.AddItem(n);
-			return RedirectToAction("ShowListNhanVien");
+
+
+            var client = new HttpClient();
+            string url = $"https://localhost:7023/api/NhanVien/create-NhanVien?idchucvu={n.IdchucVu}&ma={n.Ma}&hoTen={n.HoTen}&sDT={n.Sdt}&matKhau={n.MatKhau}&diaChi={n.DiaChi}&gioiTinh={n.GioiTinh}&ngaySinh={n.Ngaysinh}";
+
+			var repons = client.PostAsync(url, null);
+
+            return RedirectToAction("ShowListNhanVien");
 		}
 		public IActionResult Index()
         {

@@ -30,7 +30,7 @@ namespace C_5_Api_CodeFirst.Controllers
 
         // POST 
         [HttpPost("create-NhanVien")]
-        public bool CreateNhanVien(Guid idchucvu,string ma, string hoTen, string sDT, string matKhau, string diaChi, string gioiTinh, DateTime ngaySinh)
+        public bool CreateNhanVien(Guid idchucvu,string ma, string hoTen, string sDT, string matKhau, string diaChi, string gioiTinh, string ngaySinh)
         {
             NhanVien nhanVien = new NhanVien();
             nhanVien.Id = Guid.NewGuid();
@@ -41,13 +41,13 @@ namespace C_5_Api_CodeFirst.Controllers
             nhanVien.MatKhau = matKhau;
             nhanVien.DiaChi = diaChi;
             nhanVien.GioiTinh = gioiTinh;
-            nhanVien.Ngaysinh = ngaySinh;
+            nhanVien.Ngaysinh = DateTime.Parse(ngaySinh);
             return repos.AddItem(nhanVien);
         }
 
         // PUT 
         [HttpPut("{id}")]
-        public bool PutProductDetail(Guid id, string ma, string hoTen, string sDT, string matKhau, string diaChi, string gioiTinh, DateTime ngaySinh)
+        public bool PutProductDetail(Guid id, string ma, string hoTen, string sDT, string matKhau, string diaChi, string gioiTinh, string ngaySinh)
         {
             var nhanVien = repos.GetAll().First(p => p.Id == id);
             nhanVien.Ma = ma;
@@ -56,7 +56,7 @@ namespace C_5_Api_CodeFirst.Controllers
             nhanVien.MatKhau = matKhau;
             nhanVien.DiaChi = diaChi;
             nhanVien.GioiTinh = gioiTinh;
-            nhanVien.Ngaysinh = ngaySinh;
+            nhanVien.Ngaysinh = DateTime.Parse(ngaySinh);
             return repos.EditItem(nhanVien);
 
         }

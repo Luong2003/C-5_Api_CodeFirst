@@ -1,16 +1,16 @@
 ﻿@model App_Data.Model.NhanVien
 
 @{
-    ViewData["Title"] = "CreateNhanVien";
+    ViewData["Title"] = "CreateNv";
 }
 
-<h1>CreateNhanVien</h1>
+<h1>CreateNv</h1>
 
 <h4>NhanVien</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="CreateNhanVien">
+        <form asp-action="CreateNv">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             @*<div class="form-group">
                 <label asp-for="Id" class="control-label"></label>
@@ -18,8 +18,8 @@
                 <span asp-validation-for="Id" class="text-danger"></span>
             </div>*@
             <div class="form-group">
-                <select asp-for="IdchucVu" class="form-control" asp-items="@ViewBag.ChucVuList"></select>
-                <label for="floatingInputEmail">Product</label>
+                <label asp-for="IdchucVu" class="control-label"></label>
+                <input asp-for="IdchucVu" class="form-control" />
                 <span asp-validation-for="IdchucVu" class="text-danger"></span>
             </div>
             <div class="form-group">

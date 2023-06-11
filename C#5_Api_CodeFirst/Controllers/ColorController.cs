@@ -56,7 +56,7 @@ namespace C_5_Api_CodeFirst.Controllers
         }
 
         // DELETE api/<SaleController>/5
-        [HttpDelete("[action]")]
+        [HttpDelete]
         public bool DeleteColor(Guid id)
         {
             Color color = _Colorrepo.GetAll().First(c => c.Id == id);

@@ -27,7 +27,7 @@ namespace AppView.Controllers
         [HttpGet]
         public async Task<IActionResult> ShowListColor()
         {
-            string apiUrl = "https://localhost:7023/api/ChucVu/GetBill";
+            string apiUrl = "https://localhost:7023/api/Color/Getall";
             var httpClient = new HttpClient();
             var respose = await httpClient.GetAsync(apiUrl);
             string apiData = await respose.Content.ReadAsStringAsync();
@@ -52,7 +52,26 @@ namespace AppView.Controllers
 
             return RedirectToAction("ShowListColor");
         }
- 
+
+        [HttpGet]
+        public async Task<IActionResult> UpdateColor(Guid id)
+        {
+            Color color = _Colorrepo.GetAll().FirstOrDefault(x => x.Id == id);
+            return View(color);
+        }    
+        [HttpPost]
+        public async Task<IActionResult> UpdateColor(Color c)
+        {
+            _Colorrepo.EditItem(c);
+            return RedirectToAction("ShowListColor");
+        }
+
+        public IActionResult DeleteColor(Color c)
+        {
+            _Colorrepo.RemoveItem(c);
+            return RedirectToAction("ShowListColor");
+        }
+
         public IActionResult Index()
         {
             return View();

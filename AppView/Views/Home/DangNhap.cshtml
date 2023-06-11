@@ -1,0 +1,34 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model App_Data.Model.KhachHang
+@{
+    ViewBag.Title = "DangNhap";
+}
+<div class="row justify-content-md-center">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                Login
+            </div>
+            <div class="card-body">
+                @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Sdt)
+                        @Html.TextBoxFor(m => m.Sdt, "", new { @class = "form-control", @placeholder = "Username" })
+
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.MatKhau)
+                        @Html.PasswordFor(m => m.MatKhau, new { @class = "form-control", @placeholder = "Password" })
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block" value="Login"> Login  </button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

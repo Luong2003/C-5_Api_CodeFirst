@@ -127,7 +127,7 @@ namespace AppView.Controllers
 
             return RedirectToAction("ShowListProductDetail");
         }
-        [HttpPost]
+        
         public IActionResult DeleteSpDetail(ProductDetail p)
         {
             _ProductDetailRepo.RemoveItem(p);
