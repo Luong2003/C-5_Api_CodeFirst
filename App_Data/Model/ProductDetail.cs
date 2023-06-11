@@ -27,10 +27,10 @@ namespace App_Data.Model
         public DateTime? NgaySanXuat { get; set; }
         public string? TrangThaiKhuyenMai { get; set; }
 
-        public virtual Color? Color{ get; set; }
-        public virtual Product? Product { get; set; }
-        public virtual Size? Size{ get; set; }
-        public virtual Sale? Sale { get; set; }
+        public virtual Color Color{ get; set; }
+        public virtual Product Product { get; set; }
+        public virtual Size Size{ get; set; }
+        public virtual Sale Sale { get; set; }
         public virtual IEnumerable<BillDetail> BillDetails { get; set; }
         public virtual IEnumerable<CartDetail> CartDetails { get; set; }
     }

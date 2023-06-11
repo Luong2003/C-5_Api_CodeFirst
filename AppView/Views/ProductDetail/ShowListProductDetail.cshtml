@@ -12,9 +12,9 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.Id)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Idproduct)
             </th>
@@ -69,20 +69,44 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Id)
+            </td>*@
+            <td>
+                @foreach (var product in ViewBag.ProductList as SelectList)
+                 {
+                  if (product.Value == item.Idproduct.ToString())
+                  {
+                      @product.Text
+                   }
+                 }
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Idproduct)
+                @foreach (var color in ViewBag.ColorList as SelectList)
+                 {
+                  if (color.Value == item.Idcolor.ToString())
+                  {
+                      @color.Text
+                   }
+                 }
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Idcolor)
+                @foreach (var size in ViewBag.SizeList as SelectList)
+                 {
+                  if (size.Value == item.Idsize.ToString())
+                  {
+                      @size.Text
+                   }
+                 }
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Idsize)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdSale)
+                @foreach (var sale in ViewBag.SaleList as SelectList)
+                 {
+                  if (sale.Value == item.IdSale.ToString())
+                  {
+                      @sale.Text
+                   }
+                 }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CongNgheManHinh)
@@ -123,7 +147,7 @@
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
             </td>
         </tr>
 }

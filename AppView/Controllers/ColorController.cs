@@ -2,8 +2,10 @@
 using App_Data.Model;
 using App_Data.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using System.Data;
 using System.Security.AccessControl;
 using System.Text;
 
@@ -21,10 +23,11 @@ namespace AppView.Controllers
             AllRepositories<Color> all = new AllRepositories<Color>(_C5context, _colors);
             _Colorrepo = all; 
         }
+        
         [HttpGet]
         public async Task<IActionResult> ShowListColor()
         {
-            string apiUrl = "https://localhost:7023/api/Color/Getall";
+            string apiUrl = "https://localhost:7023/api/ChucVu/GetBill";
             var httpClient = new HttpClient();
             var respose = await httpClient.GetAsync(apiUrl);
             string apiData = await respose.Content.ReadAsStringAsync();
@@ -49,7 +52,7 @@ namespace AppView.Controllers
 
             return RedirectToAction("ShowListColor");
         }
-
+ 
         public IActionResult Index()
         {
             return View();

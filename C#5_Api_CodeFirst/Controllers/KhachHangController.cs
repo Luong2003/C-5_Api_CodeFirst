@@ -29,14 +29,14 @@ namespace C_5_Api_CodeFirst.Controllers
         }
 
         // GET api/<ValuesController>/5
-        [HttpGet("{name}")]
-        public IEnumerable<KhachHang> Get(string name) // Tìm theo tên
-        {
-            return repos.GetAll().Where(p => p.Ten.Contains(name));
-        }
+        //[HttpGet("{name}")]
+        //public IEnumerable<KhachHang> Get(string name) // Tìm theo tên
+        //{
+        //    return repos.GetAll().Where(p => p.Ten.Contains(name));
+        //}
 
         // POST api/<ValuesController>
-        [HttpPost("Add-Customers")]
+        [HttpPost("action")]
         public bool AddCustomers(string ten, string sdt, string matkhau, string diachi)
         {
             KhachHang kh = new KhachHang();
@@ -45,7 +45,7 @@ namespace C_5_Api_CodeFirst.Controllers
             kh.MatKhau = matkhau;
             kh.DiaChi = diachi;
             kh.Id = Guid.NewGuid();
-            kh.IdtichDiem = Guid.Parse("1953E37B-CE30-47E5-ADA4-92E68F7916EF");
+            kh.IdtichDiem = Guid.NewGuid();
             return repos.AddItem(kh);
         }
 

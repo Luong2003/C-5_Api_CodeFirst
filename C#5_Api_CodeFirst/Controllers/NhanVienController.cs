@@ -30,12 +30,12 @@ namespace C_5_Api_CodeFirst.Controllers
 
         // POST 
         [HttpPost("create-NhanVien")]
-        public bool CreateNhanVien(string ma, string hoTen, string sDT, string matKhau, string diaChi, string gioiTinh, DateTime ngaySinh)
+        public bool CreateNhanVien(Guid idchucvu,string ma, string hoTen, string sDT, string matKhau, string diaChi, string gioiTinh, DateTime ngaySinh)
         {
             NhanVien nhanVien = new NhanVien();
             nhanVien.Id = Guid.NewGuid();
-            nhanVien.IdchucVu = Guid.Parse("0C64EEF3-69C7-478E-80D1-58BCD8444E4C"); // Chưa ghép View nên chưa có data nên phải fix cứng;
-            nhanVien.Ma = ma;
+            nhanVien.IdchucVu = idchucvu;
+			nhanVien.Ma = ma;
             nhanVien.HoTen = hoTen;
             nhanVien.Sdt = sDT;
             nhanVien.MatKhau = matKhau;

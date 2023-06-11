@@ -12,8 +12,11 @@ namespace C_5_Api_CodeFirst.Controllers
     public class ProductDetailController : ControllerBase
     {
         private readonly IAllRepositories<ProductDetail> ProductDetailRepo;
-
-        NHOM5_C5Context context = new NHOM5_C5Context();
+		private readonly IAllRepositories<Color> colorrp;
+		private readonly IAllRepositories<Product> productrp;
+		private readonly IAllRepositories<Size> sizerp;
+		private readonly IAllRepositories<Sale> salerp;
+		NHOM5_C5Context context = new NHOM5_C5Context();
 
         DbSet<ProductDetail> productDetails;
         public ProductDetailController()
@@ -34,20 +37,17 @@ namespace C_5_Api_CodeFirst.Controllers
             return ProductDetailRepo.GetAll().First(c => c.Id == id);
         }
 
-
-
-        //POST
-       [HttpPost("create-ProductDetail")]
-        public bool CreateProductDetail(Guid idsp, Guid idcolor, Guid idsize, Guid idsale ,string congnghemanhinh, DateTime baohanh, int series, string dophangiai, string mota, int soluongton, float giasale, float giaban, string nhasanxuat, string theloai, DateTime ngaysanxuat, string trangthaikhuyenmai)
+        [HttpPost("{Create-product}")]
+        public bool CreateProductDetail(Guid idcolor, Guid idproduct, Guid idsize, Guid idsale, string congnghemanhinh, string baohanh, int series, string dophangiai, string mota, int soluongton, float giaban, float giasale, string nhasanxuat, string theloai, string ngaysanxuat, string trangthaikhuyenmai )
         {
             ProductDetail productDetail = new ProductDetail();
             productDetail.Id = Guid.NewGuid();
-            productDetail.Idproduct = idsp;
             productDetail.Idcolor = idcolor;
-            productDetail.Idsize = idsize;
+            productDetail.Idproduct = idproduct;
             productDetail.IdSale = idsale;
+            productDetail.Idsize = idsize;
             productDetail.CongNgheManHinh = congnghemanhinh;
-            productDetail.BaoHanh = baohanh;
+            productDetail.BaoHanh = DateTime.Parse(baohanh);
             productDetail.Series = series;
             productDetail.DoPhanGiai = dophangiai;
             productDetail.MoTa = mota;
@@ -56,46 +56,16 @@ namespace C_5_Api_CodeFirst.Controllers
             productDetail.GiaSale = giasale;
             productDetail.NhaSanXuat = nhasanxuat;
             productDetail.TheLoai = theloai;
-            productDetail.NgaySanXuat = ngaysanxuat;
+            productDetail.NgaySanXuat = DateTime.Parse(ngaysanxuat); ;
             productDetail.TrangThaiKhuyenMai = trangthaikhuyenmai;
-            //if (productDetail.GiaSale > 0)
-            //{
-            //    productDetail.TrangThaiKhuyenMai = "Có";
-            //}
-            //else
-            //{
-            //    productDetail.TrangThaiKhuyenMai = "không";
-            //}
-            return ProductDetailRepo.AddItem(productDetail);
+            return ProductDetailRepo.AddItem( productDetail );
         }
 
-        // PUT 
-        [HttpPut("{id}")]
-        public bool PutProductDetail(Guid id, string congnghemanhinh, DateTime baohanh, int series, string dophangiai, string mota, int soluongton, float giasale, float giaban, string nhasanxuat, string theloai, DateTime ngaysanxuat, string trangthaikhuyenmai)
+        [HttpDelete("[action]")]
+        public bool DeleteProductDetail(Guid id)
         {
-            ProductDetail productDetail = ProductDetailRepo.GetAll().FirstOrDefault(p => p.Id == id);
-            productDetail.CongNgheManHinh = congnghemanhinh;
-            productDetail.BaoHanh = baohanh;
-            productDetail.Series = series;
-            productDetail.DoPhanGiai = dophangiai;
-            productDetail.MoTa = mota;
-            productDetail.SoLuongTon = soluongton;
-            productDetail.GiaBan = giaban;
-            productDetail.GiaSale = giasale;
-            productDetail.NhaSanXuat = nhasanxuat;
-            productDetail.TheLoai = theloai;
-            productDetail.NgaySanXuat = ngaysanxuat;
-            productDetail.TrangThaiKhuyenMai = trangthaikhuyenmai;
-            return ProductDetailRepo.EditItem(productDetail);
-
-        }
-
-        // DELETE 
-        [HttpDelete("{id}")]
-        public bool DeleteCart(Guid id)
-        {
-            var productDetail = ProductDetailRepo.GetAll().First(p => p.Id == id);
-            return ProductDetailRepo.RemoveItem(productDetail);
+            var product = ProductDetailRepo.GetAll().First(c => c.Id == id);
+            return ProductDetailRepo.RemoveItem(product);
         }
     }
 }
